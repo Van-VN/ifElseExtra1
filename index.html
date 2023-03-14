@@ -18,7 +18,8 @@
 <input type="number" id="age" min="0" step="1" placeholder="Nhập tuổi">
 <button onclick="checkAge()">Press to start</button>
 
-<h2>Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0</h2>
+<h2>Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn
+    0</h2>
 <input type="number" id="getNum" step="1" placeholder="Nhập số bất kì">
 <button onclick="checkNum()">Press to start</button>
 
@@ -27,6 +28,15 @@
 <input type="number" id="num2" step="1" placeholder="Nhập số B bất kì">
 <input type="number" id="num3" step="1" placeholder="Nhập số C bất kì">
 <button onclick="checkBigNum()">Press to start</button>
+
+<h2>Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ</h2>
+<input type="number" id="score1" step="1" min="0" max="10" placeholder="Nhập điểm thi giữa kỳ" style="width: 200px">
+<input type="number" id="score2" step="1" min="0" max="10" placeholder="Nhập điểm thi cuối kỳ" style="width: 200px">
+<button onclick="avgScore()">Press to start</button>
+
+<h2>Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng</h2>
+<input type="number" id="commission" step="1" min="0" placeholder="Nhập số tiền doanh thu" style="width: 400px">
+<button onclick="paymentCheck()">Press to start</button>
 
 </body>
 </html>
@@ -47,6 +57,7 @@
             alert(`Số C với giá trị ${num3} là số lớn nhất`)
         }
     }
+
     function compareNum() {
         let numA = document.getElementById('numA').value;
         let numB = document.getElementById('numB').value;
@@ -78,6 +89,40 @@
         }
     }
 
+    function avgScore() {
+        let midTermScore = +document.getElementById('score1').value;
+        let finalScore = +document.getElementById('score2').value;
+        let avg = (midTermScore + finalScore) / 2;
+        // console.log(midTermScore, finalScore, avg);
+        if (midTermScore > 10 || finalScore > 10 || midTermScore < 0 || finalScore < 0) {
+            alert("Nhập sai dữ liệu, nhập lại điểm trong khoảng 0 - 10");
+        } else if (avg < 6.5) {
+            alert("Điểm trung bình thấp hơn 6,5 -> Học lực trung bình");
+        } else if (avg >= 6.5 && avg < 8.5) {
+            alert(`Điểm trung bình ${avg} -> Học lực khá`);
+        } else if (avg >= 8.5) {
+            alert(`Điểm trung bình ${avg} -> Học lực giỏi`);
+        }
+
+    }
+
+    function paymentCheck() {
+        let gotMoney;
+        let commission = +document.getElementById('commission').value;
+        if (commission < 0 || isNaN(commission)) {
+            alert("Nhập sai dữ liệu");
+        } else if (commission < 2000000) {
+            gotMoney = commission * 0.03;
+            alert(`Doanh thu đạt được ${commission.toLocaleString()} -> số tiền hoa hồng là ${gotMoney.toLocaleString()}`);
+        } else if (commission >= 2000000 && commission <= 5000000) {
+            gotMoney = (commission - 2000000) * 0.05 + 2000000 * 0.03;
+            alert(`Doanh thu đạt được ${commission.toLocaleString()} -> số tiền hoa hồng là ${gotMoney.toLocaleString()}`);
+        } else if (commission > 5000000) {
+            gotMoney = (commission - 5000000) * 0.1 + (commission - 2000000) * 0.05 + 2000000 * 0.03;
+            alert(`Doanh thu đạt được ${commission.toLocaleString()} -> số tiền hoa hồng là ${gotMoney.toLocaleString()}`);
+        }
+    }
+
 </script>
 
 
@@ -85,3 +130,11 @@
 <!--Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.-->
 <!--Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0-->
 <!--Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó-->
+<!--Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ-->
+<!--Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng-->
+
+<!--Đơn từ 0 đến 2.000.000đ, nhận 3% trên tổng đơn-->
+
+<!-- - Đơn từ 2.000.000 đến 5000.000đ, nhận 5% trên tổng đơn-->
+
+<!-- - Đơn trên 5.000.000đ, nhận 10% trên tổng đơn-->
