@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>Bài 1: Nhập vào hai số a và b, và kiểm tra xem a có chia hết cho b hay không</h2>
+<input type="number" id="numA" placeholder="Nhập số A">
+<input type="number" id="numB" placeholder="Nhập số B">
+<button onclick="compareNum()">Press to check</button>
+
+<h2>Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.</h2>
+<input type="number" id="age" min="0" step="1" placeholder="Nhập tuổi">
+<button onclick="checkAge()">Press to start</button>
+
+<h2>Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0</h2>
+<input type="number" id="getNum" step="1" placeholder="Nhập số bất kì">
+<button onclick="checkNum()">Press to start</button>
+
+<h2>Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó</h2>
+<input type="number" id="num1" step="1" placeholder="Nhập số A bất kì">
+<input type="number" id="num2" step="1" placeholder="Nhập số B bất kì">
+<input type="number" id="num3" step="1" placeholder="Nhập số C bất kì">
+<button onclick="checkBigNum()">Press to start</button>
+
+</body>
+</html>
+
+<script>
+
+    function checkBigNum() {
+        let num1 = +document.getElementById('num1').value;
+        let num2 = +document.getElementById('num2').value;
+        let num3 = +document.getElementById('num3').value;
+        if (num1 === num2 || num2 === num3 || num1 === num3) {
+            alert("Nhập 3 số khác nhau để kiểm tra!")
+        } else if (num1 > num2 && num1 > num3) {
+            alert(`Số A với giá trị ${num1} là số lớn nhất`)
+        } else if (num2 > num1 && num2 > num3) {
+            alert(`Số B với giá trị ${num2} là số lớn nhất`)
+        } else if (num3 > num1 && num3 > num2) {
+            alert(`Số C với giá trị ${num3} là số lớn nhất`)
+        }
+    }
+    function compareNum() {
+        let numA = document.getElementById('numA').value;
+        let numB = document.getElementById('numB').value;
+
+        if (numA % numB === 0) {
+            alert("Số A chia hết cho số B");
+        } else {
+            alert("Số A không chia hết cho số B");
+        }
+    }
+
+    function checkAge() {
+        let pAge = +document.getElementById('age').value;
+        if (pAge < 16) {
+            alert("Chưa đủ tuổi đi học lớp 10");
+        } else if (pAge > 16) {
+            alert("Quá tuổi đi học lớp 10");
+        } else if (pAge === 16) {
+            alert("Đủ tuổi học lớp 10");
+        }
+    }
+
+    function checkNum() {
+        let numInput = +document.getElementById('getNum').value;
+        if (numInput >= 0) {
+            alert("Số đã nhập lớn hơn hoặc bằng 0");
+        } else {
+            alert("Số đã nhập nhỏ hơn 0");
+        }
+    }
+
+</script>
+
+
+<!--Bài 1: Nhập vào hai số a và b, và kiểm tra xem a có chia hết cho b hay không-->
+<!--Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.-->
+<!--Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0-->
+<!--Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó-->
